@@ -21,7 +21,7 @@ user = "zad"
 password = "968397"
 
 ROOT_DIR = os.path.expanduser("~/kinect")
-DATA_DIR = os.path.join(ROOT_DIR, "edata")
+DATA_DIR = os.path.join(ROOT_DIR, "data")
 BACKUP_DIR = os.path.join(ROOT_DIR, "backup")
 LOG_FILE = os.path.join(ROOT_DIR, "uploader" + date.today().strftime("%Y%m%d") + ".log")
 
@@ -110,7 +110,7 @@ try:
         # Example: filename = 201401012312.zip, day = 20140101, hour = 23
         day = filename[:8]
         hour = filename[8:10]
-        remotePath = os.path.join('/data/WICU_DATASET_2014/incoming', args.client_location + "_" + args.client_ID, day, hour)
+        remotePath = os.path.join('/edata/WICU_DATASET_2014/incoming', args.client_location + "_" + args.client_ID, day, hour)
         filePath = os.path.join(DATA_DIR, filename)
         mkdirCmd = "mkdir -p " + remotePath
         logging.info("run cmd: " + mkdirCmd)
