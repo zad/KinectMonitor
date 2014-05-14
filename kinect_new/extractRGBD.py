@@ -2,6 +2,10 @@ import argparse
 import os, sys
 import tarfile
 from os.path import expanduser
+import numpy
+
+KEY_FILE = os.path.join(MODULE_DIRECTORY, "key.bin")
+KEY = np.fromfile(KEY_FILE, dtype=np.int8)
 
 
 def main():
