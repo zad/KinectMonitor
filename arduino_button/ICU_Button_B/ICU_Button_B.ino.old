@@ -1,0 +1,39 @@
+
+// On most boards pin 13 should be used as an output because
+// it has an attached LED and an attached resistor. (See
+// the digitalWrite() documentation.)
+int ledPin = 13;
+
+int buttonPin = 12;
+
+boolean buttonPushed = 0, buttonWasPushed = 0, recording = 0;
+
+// Runs once when you hit reset.
+void setup() {                
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);   
+  pinMode(buttonPin, INPUT);  
+}
+
+// Main Arduino loop
+void loop() {
+  
+  buttonWasPushed = buttonPushed;
+  buttonPushed = digitalRead(buttonPin);
+  
+  // The light should always be set by receiving serial
+  // data. This way it's in sync with recording..
+  if (Serial.available() > 0) {
+    recording = Serial.read() - '0';
+    digitalWrite(ledPin, recording);
+  }
+  
+  // Tell the computer if the button was just pushed.
+  if (buttonPushed && !buttonWasPushed) {
+    recording = !recording;
+    Serial.print(recording);
+  }
+  
+  delay(50);
+  
+}
