@@ -4,6 +4,7 @@ import tarfile
 from os.path import expanduser
 import numpy as np
 from StringIO import StringIO
+import Image
 
 MODULE_FILE = os.path.abspath(__file__)
 MODULE_DIRECTORY = os.path.dirname(MODULE_FILE)
