@@ -43,9 +43,12 @@ def main():
                             tar.extract(member, path=depth_dir)
                         elif member.name.endswith("image.jpg"):
                             tar.extract(member, path=rgb_dir)
-                            rgbFile = os.path.join(rgb_dir, member.name)
-                            rgbData = loadRGB(rgbFile, True)
-                            saveRGB(rgbFile, rgbData, False)
+                            try:
+                                rgbFile = os.path.join(rgb_dir, member.name)
+                                rgbData = loadRGB(rgbFile, True)
+                                saveRGB(rgbFile, rgbData, False)
+                            except IOError:
+                                print "ignore truncated file:", rgb_dir, member.name
 
 def saveRGB(filename, dataArray, obfuscate=True):
     dataImage = Image.fromarray(dataArray)
