@@ -4,6 +4,9 @@ import tarfile
 from os.path import expanduser
 import numpy
 
+MODULE_FILE = os.path.abspath(__file__)
+MODULE_DIRECTORY = os.path.dirname(MODULE_FILE)
+
 KEY_FILE = os.path.join(MODULE_DIRECTORY, "key.bin")
 KEY = np.fromfile(KEY_FILE, dtype=np.int8)
 
