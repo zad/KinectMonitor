@@ -21,7 +21,7 @@ user = "zad"
 password = "968397"
 
 ROOT_DIR = os.path.expanduser("~/kinect")
-DATA_DIR = os.path.join(ROOT_DIR, "data")
+DATA_DIR = os.path.join(ROOT_DIR, "edata")
 BACKUP_DIR = os.path.join(ROOT_DIR, "backup")
 LOG_FILE = os.path.join(ROOT_DIR, "uploader" + date.today().strftime("%Y%m%d") + ".log")
 

@@ -1,3 +1,14 @@
+# Ignore key and certificates
+*.key
+*.cert
+ssh/
+WICU*
+*.bin
+
+# Ignore log
+*.log
+*.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
