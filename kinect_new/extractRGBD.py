@@ -5,6 +5,7 @@ from os.path import expanduser
 import numpy as np
 from StringIO import StringIO
 import Image
+import shutil
 
 MODULE_FILE = os.path.abspath(__file__)
 MODULE_DIRECTORY = os.path.dirname(MODULE_FILE)
