@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("rgb_folder", help="This is the folder holding RGB files")
     parser.add_argument("-r", "--remove", help="Remove extracted images within the directory", action="store_true", default=False)
+    parser.add_argument("-v", "--verbose", help="Show verbose information", action="store_true", default=False)
     args = parser.parse_args()
 
     if not args.rgb_folder:
@@ -44,7 +45,8 @@ def main():
                         os.mkdir(rgb_dir)
                     for member in tar.getmembers():
                         member.name = os.path.basename(member.name)
-                        print member.name
+                        if args.verbose:
+                            print member.name
                         if member.name.endswith("depth.png"):
                             tar.extract(member, path=depth_dir)
                         elif member.name.endswith("image.jpg"):
