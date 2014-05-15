@@ -41,7 +41,7 @@ def main():
                         os.mkdir(rgb_dir)
                     for member in tar.getmembers():
                         member.name = os.path.basename(member.name)
-                        # print member.name
+                        print member.name
                         if member.name.endswith("depth.png"):
                             tar.extract(member, path=depth_dir)
                         elif member.name.endswith("image.jpg"):
