@@ -27,8 +27,9 @@ def main():
                 print root
                 print file
                 tar = tarfile.open(os.path.join(root, file))
-                depth_dir = os.path.join(root, "depth")
-                rgb_dir = os.path.join(root, "rgb")
+                tarfileName = file[:-4]
+                depth_dir = os.path.join(root, tarfileName + "_depth")
+                rgb_dir = os.path.join(root, tarfileName + "_rgb")
                 if args.remove:
                     if os.path.isdir(depth_dir):
                         shutil.rmtree(depth_dir)
