@@ -21,6 +21,9 @@ def main():
     parser.add_argument("-r", "--remove", help="Remove extracted images within the directory", action="store_true", default=False)
     args = parser.parse_args()
 
+    if not args.rgb_folder:
+        parser.print_help()
+
     for root, dirs, files in os.walk(args.rgb_folder):
         for file in files:
             if file.endswith("tar"):
