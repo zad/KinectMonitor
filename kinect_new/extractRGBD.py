@@ -30,8 +30,10 @@ def main():
                 depth_dir = os.path.join(root, "depth")
                 rgb_dir = os.path.join(root, "rgb")
                 if args.remove:
-                    shutil.rmtree(depth_dir)
-                    shutil.rmtree(rgb_dir)
+                    if os.path.isdir(depth_dir):
+                        shutil.rmtree(depth_dir)
+                    if os.path.isdir(rgb_dir):
+                        shutil.rmtree(rgb_dir)
                 else:
                     if not os.path.isdir(depth_dir):
                         os.mkdir(depth_dir)
