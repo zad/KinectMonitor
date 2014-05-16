@@ -20,6 +20,7 @@ def main():
     parser.add_argument("rgb_folder", help="This is the folder holding RGB files")
     parser.add_argument("-r", "--remove", help="Remove extracted images within the directory", action="store_true", default=False)
     parser.add_argument("-v", "--verbose", help="Show verbose information", action="store_true", default=False)
+    parser.add_argument("-d", "--directory", help="Assign the directory for images ", action="store_true", default=False)
     args = parser.parse_args()
 
     if not args.rgb_folder:
@@ -30,6 +31,8 @@ def main():
             if file.endswith("tar"):
                 print root
                 print file
+                if args.directory:
+                    root = args.directory
                 tar = tarfile.open(os.path.join(root, file))
                 depth_dir = os.path.join(root, "depth")
                 rgb_dir = os.path.join(root, "rgb")
