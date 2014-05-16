@@ -32,10 +32,12 @@ def main():
                 print root
                 print file
                 if args.directory:
-                    root = args.directory
+                    outdir = args.directory
+                else:
+                    outdir = root
                 tar = tarfile.open(os.path.join(root, file))
-                depth_dir = os.path.join(root, "depth")
-                rgb_dir = os.path.join(root, "rgb")
+                depth_dir = os.path.join(outdir, "depth")
+                rgb_dir = os.path.join(outdir, "rgb")
                 if args.remove:
                     if os.path.isdir(depth_dir):
                         shutil.rmtree(depth_dir)
