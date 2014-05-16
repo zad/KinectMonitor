@@ -45,9 +45,9 @@ def main():
                         shutil.rmtree(rgb_dir)
                 else:
                     if not os.path.isdir(depth_dir):
-                        os.mkdir(depth_dir)
+                        os.mkdirs(depth_dir)
                     if not os.path.isdir(rgb_dir):
-                        os.mkdir(rgb_dir)
+                        os.mkdirs(rgb_dir)
                     for member in tar.getmembers():
                         member.name = os.path.basename(member.name)
                         if args.verbose:
