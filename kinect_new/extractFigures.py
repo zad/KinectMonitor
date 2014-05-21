@@ -53,22 +53,27 @@ def main():
                         os.makedirs(depth_dir)
                     if not os.path.isdir(rgb_dir):
                         os.makedirs(rgb_dir)
+                    depthReady = False
+                    imageReady = False
                     for member in tar.getmembers():
                         member.name = os.path.basename(member.name)
                         if args.verbose:
                             print member.name
-                        if member.name.endswith("depth.png"):
+                        if member.name.endswith("depth.png") and not depthReady:
                             tar.extract(member, path=depth_dir)
-                        elif member.name.endswith("image.jpg"):
+                            depthReady = True
+                        elif member.name.endswith("image.jpg") and not imageReady:
                             tar.extract(member, path=rgb_dir)
                             try:
                                 rgbFile = os.path.join(rgb_dir, member.name)
                                 rgbData = loadRGB(rgbFile, True)
                                 saveRGB(rgbFile, rgbData, False)
-                                if sampling == "minute":
-                                    break
+                                imageReady = True
                             except IOError:
                                 print "ignore truncated file:", rgb_dir, member.name
+                        if sampling == "minute":
+                            if depthReady and imageReady:
+                                break;
 
 def saveRGB(filename, dataArray, obfuscate=True):
     dataImage = Image.fromarray(dataArray)
