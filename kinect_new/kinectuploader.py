@@ -18,7 +18,7 @@ BACKUP_SIZE_IN_MINS = 60 * 24 * 5    # five days
 server = "rambo.isi.jhu.edu"
 port = 22
 user = "zad"
-password = "968397"
+password = ""
 
 ROOT_DIR = os.path.expanduser("~/kinect")
 DATA_DIR = os.path.join(ROOT_DIR, "data")
