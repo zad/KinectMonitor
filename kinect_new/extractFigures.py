@@ -39,7 +39,7 @@ def main():
                 if args.directory:
                     outdir = args.directory
                 else:
-                    outdir = root.replace("edata/WICU_DATASET_2014/incoming","edata/WICU_DATASET_2014_SAMPLE_" + args.sampling)
+                    outdir = root.replace("edata/WICU_DATASET_2014/incoming","edata/WICU_DATASET_2014_SAMPLE_" + sampling)
                 tar = tarfile.open(os.path.join(root, file))
                 depth_dir = os.path.join(outdir, "depth")
                 rgb_dir = os.path.join(outdir, "rgb")
