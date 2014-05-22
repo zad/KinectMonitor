@@ -39,7 +39,7 @@ def main():
                 if args.directory:
                     outdir = args.directory
                 else:
-                    outdir = root
+                    outdir = root.replace("edata/WICU_DATASET_2014/incoming","edata/WICU_DATASET_2014_SAMPLE_" + args.sampling)
                 tar = tarfile.open(os.path.join(root, file))
                 depth_dir = os.path.join(outdir, "depth")
                 rgb_dir = os.path.join(outdir, "rgb")
@@ -64,13 +64,13 @@ def main():
                             depthReady = True
                         elif member.name.endswith("image.jpg") and not imageReady:
                             tar.extract(member, path=rgb_dir)
-                            try:
-                                rgbFile = os.path.join(rgb_dir, member.name)
-                                rgbData = loadRGB(rgbFile, True)
-                                saveRGB(rgbFile, rgbData, False)
-                                imageReady = True
-                            except IOError:
-                                print "ignore truncated file:", rgb_dir, member.name
+                            # try:
+                            #     rgbFile = os.path.join(rgb_dir, member.name)
+                            #     rgbData = loadRGB(rgbFile, True)
+                            #     saveRGB(rgbFile, rgbData, False)
+                            imageReady = True
+                            # except IOError:
+                            #     print "ignore truncated file:", rgb_dir, member.name
                         if sampling == "minute":
                             if depthReady and imageReady:
                                 break;
