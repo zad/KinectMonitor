@@ -57,7 +57,7 @@ def main():
                     depthReady = False
                     imageReady = False
                     depthFiles = os.listdir(depth_dir)
-                    imageFiles = os.listdir(image_dir)
+                    imageFiles = os.listdir(rgb_dir)
                     if len(depthFiles) > 0:
                         for f in depthFiles:
                             if f.startswith(file[:-4]) and f.endswith("depth.png"):

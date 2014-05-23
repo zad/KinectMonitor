@@ -24,8 +24,8 @@ def main():
         parser.print_help()
 
     try:
-        rgbData = loadRGB(encrypted, True)
-        plainrgb = encrypted.replace(".jpg",".plain.jpg")
+        rgbData = loadRGB(args.encrypted, True)
+        plainrgb = args.encrypted.replace(".jpg",".plain.jpg")
         saveRGB(plainrgb, rgbData, False)
 
     except IOError:
