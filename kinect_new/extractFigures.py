@@ -22,6 +22,7 @@ def main():
     parser.add_argument("-v", "--verbose", help="Show verbose information", action="store_true", default=False)
     parser.add_argument("-d", "--directory", help="Assign the directory for images")
     parser.add_argument("-s", "--sampling", help="sampling method, e.g., default is minute")
+    parser.add_argument("-u", "--update", help="update mode, i.e., do not remove existing files", action="store_true", default=False)
     args = parser.parse_args()
 
     if not args.rgb_folder:
@@ -55,6 +56,21 @@ def main():
                         os.makedirs(rgb_dir)
                     depthReady = False
                     imageReady = False
+                    depthFiles = os.listdir(depth_dir)
+                    imageFiles = os.listdir(image_dir)
+                    if len(depthFiles) > 0:
+                        for f in depthFiles:
+                            if f.startswith(file[:-4]) and f.endswith("depth.png"):
+                                depthReady = True
+                                break
+                    if len(imageFiles) > 0:
+                        for f in imageFiles:
+                            if f.startswith(file[:-4]) and f.endswith("image.jpg"):
+                                imageReady = True
+                                break
+                    if args.update and (imageReady or depthReady):
+                        print "File exists."
+                        break
                     for member in tar.getmembers():
                         member.name = os.path.basename(member.name)
                         if args.verbose:
