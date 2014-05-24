@@ -70,26 +70,26 @@ def main():
                                 break
                     if args.update and (imageReady or depthReady):
                         print "File exists."
-                        break
-                    for member in tar.getmembers():
-                        member.name = os.path.basename(member.name)
-                        if args.verbose:
-                            print member.name
-                        if member.name.endswith("depth.png") and not depthReady:
-                            tar.extract(member, path=depth_dir)
-                            depthReady = True
-                        elif member.name.endswith("image.jpg") and not imageReady:
-                            tar.extract(member, path=rgb_dir)
-                            # try:
-                            #     rgbFile = os.path.join(rgb_dir, member.name)
-                            #     rgbData = loadRGB(rgbFile, True)
-                            #     saveRGB(rgbFile, rgbData, False)
-                            imageReady = True
-                            # except IOError:
-                            #     print "ignore truncated file:", rgb_dir, member.name
-                        if sampling == "minute":
-                            if depthReady and imageReady:
-                                break;
+                    else:
+                        for member in tar.getmembers():
+                            member.name = os.path.basename(member.name)
+                            if args.verbose:
+                                print member.name
+                            if member.name.endswith("depth.png") and not depthReady:
+                                tar.extract(member, path=depth_dir)
+                                depthReady = True
+                            elif member.name.endswith("image.jpg") and not imageReady:
+                                tar.extract(member, path=rgb_dir)
+                                # try:
+                                #     rgbFile = os.path.join(rgb_dir, member.name)
+                                #     rgbData = loadRGB(rgbFile, True)
+                                #     saveRGB(rgbFile, rgbData, False)
+                                imageReady = True
+                                # except IOError:
+                                #     print "ignore truncated file:", rgb_dir, member.name
+                            if sampling == "minute":
+                                if depthReady and imageReady:
+                                    break;
 
 def saveRGB(filename, dataArray, obfuscate=True):
     dataImage = Image.fromarray(dataArray)
