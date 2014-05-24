@@ -18,15 +18,15 @@ def main():
     # Handle command-line arguments
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("encrypted", help="Encrypted RGB file")
+    parser.add_argument("plain", help="Decrypted RGB file")
     args = parser.parse_args()
 
-    if not args.encrypted:
+    if not args.encrypted or not args.plain:
         parser.print_help()
 
     try:
         rgbData = loadRGB(args.encrypted, True)
-        plainrgb = args.encrypted.replace(".jpg",".plain.jpg")
-        saveRGB(plainrgb, rgbData, False)
+        saveRGB(args.plain, rgbData, False)
 
     except IOError:
         print "ignore truncated file:", rgb_dir, member.name
