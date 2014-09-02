@@ -13,12 +13,12 @@ import time
 import subprocess
 from time import sleep
 BACKUP_SIZE_IN_MINS = 60 * 24 * 5    # five days
+import settings
 
-
-server = "rambo.isi.jhu.edu"
-port = 22
-user = "zad"
-password = ""
+server = settings.server
+port = settings.port
+user = settings.user
+password = settings.password
 
 ROOT_DIR = os.path.expanduser("~/kinect")
 DATA_DIR = os.path.join(ROOT_DIR, "data")

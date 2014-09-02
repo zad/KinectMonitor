@@ -26,9 +26,10 @@ import threading
 from datetime import datetime, date
 import shutil
 from kinectrecorder import Recorder
+import settings
 
-SERVER = "rambo.isi.jhu.edu"
-PORT = 24680
+SERVER = settings.server
+PORT = settings.port
 
 ROOT_DIR = os.path.expanduser("~/kinect")
 DATA_DIR = os.path.join(ROOT_DIR, "data")
@@ -58,8 +59,8 @@ class KinectController:
 
     timeRecordingStopped = 0
 
-    def __init__(self):
-        self.recorder = Recorder(ROOT_DIR, DATA_DIR)
+    #def __init__(self):
+        #self.recorder = Recorder(ROOT_DIR, DATA_DIR)
 
     def set(self, setting, newValue):
 
@@ -178,7 +179,8 @@ class KinectClient(LineReceiver):
     def connectionLost(self, reason):
         """ Callback inherited from Twisted. """
 
-        self.logger.info("disconnected")
+        self.logger.info("disconnected.")
+        reason.printTraceback()
 
 
 
@@ -378,6 +380,10 @@ class KinectClientFactory(ReconnectingClientFactory):
             os.makedirs(BACKUP_DIR)
         if not os.path.isdir(DATA_DIR):
             os.makedirs(DATA_DIR)
+
+        if not self.interactiveMode:
+            # Interactive Mode doesn't need init recorder
+            self.kinectController.recorder = Recorder(ROOT_DIR, DATA_DIR)
 
         if self.buttonMode:
 

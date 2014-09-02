@@ -20,10 +20,10 @@ from twisted.protocols.basic import LineReceiver
 from twisted.internet.protocol import Factory
 from twisted.internet import ssl, reactor
 import datetime
+import settings
 
 
-PORT = 24680
-
+PORT = settings.port
 
 
 SERVER_KEY_FILE = "server.key"
@@ -55,6 +55,7 @@ class KinectServer(LineReceiver):
     def connectionLost(self, reason):
         self.factory.clients.remove(self)
         self.logger.info("%s has disconnected" % self.remoteHost)
+        reason.printTraceback()
         if self.outfile:
             self.outfile.close()
 
@@ -71,7 +72,7 @@ class KinectServer(LineReceiver):
         if line.startswith("upload"):
             """ receive upload file """
             upload_cmd, clientLoc, clientID, file_key, file_size = line.split()
-            self.logger.info("%s (%s %s) uploads %s file: %s, size: %s" 
+            self.logger.info("%s (%s %s) uploads %s file: %s, size: %s"
                              % (self.remoteHost, clientLoc, clientID, upload_cmd, file_key, file_size))
             # Example: file_key = 201401012312.zip, day = 20140101, hour = 23
             day = file_key[:8]
@@ -115,11 +116,11 @@ class KinectServerFactory(Factory):
     clients = set()
     """ The set of all connected clients. """
 
-    
+
     def __init__(self):
         pass
 
-    
+
     def buildProtocol(self, addr):
         """ Inherited from Twisted. This is what builds a KinectServer for each incoming connection. """
         return KinectServer(self)
