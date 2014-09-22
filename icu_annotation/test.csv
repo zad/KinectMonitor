@@ -1,0 +1,5 @@
+Username,Camera,StartTime,EndTime,LabelId,LabelName
+zad,WICU-room5_1,20140529_100000,20140529_102400,ICU_Mobility_Scale_1_4,Standing
+zad,WICU-room5_1,20140529_102700,20140529_105900,ICU_Mobility_Scale_1_4,Standing
+zad,WICU-room5_1,20140529_102700,20140529_105900,ICU_Mobility_Scale_1_7,Walking with assistance of 2 or more people
+zad,WICU-room5_1,20140701_150600,20140701_154400,ICU_Mobility_Scale_1_0,Nothing (lying in bed)

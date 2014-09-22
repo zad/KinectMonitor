@@ -1,0 +1,64 @@
+<!--
+     ICU_Mobility_Scale_1.xml
+     =================================================== 
+     Name: 		ICU Mobility Scale 
+     Version: 		1
+     Reference:		Hodgson, Carol, et al. "Feasibility and inter-rater reliability of the ICU mobility scale." Heart & Lung: The Journal of Acute and Critical Care 43.1 (2014): 19-24.
+  -->
+<labels>
+	<label>
+		<id>ICU_Mobility_Scale_1_0</id>
+		<name>Nothing (lying in bed)</name>
+		<description>Passively rolled or passively exercised by staff, but not actively moving</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_1</id>
+		<name>Sitting or exercises in bed</name>
+		<description>Any activity in bed, including rolling, bridging, active exercises, cycle ergometry and active assisted exercises; not moving out of bed or over the edge of the bed</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_2</id>
+		<name>Passively moved to chair (no standing)</name>
+		<description>Hoist, passive lift or slide transfer to the chair, with no standing or sitting on the edge of the bed</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_3</id>
+		<name>Sitting over edge of bed</name>
+		<description>May be assisted by staff, but involves actively sitting over the side of the bed with some trunk control</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_4</id>
+		<name>Standing</name>
+		<description>Weight bearing through the feet in the standing position, with or without assistance. This may include use of a standing lifter device or tilt table</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_5</id>
+		<name>Transferring bed to chair</name>
+		<description>Able to step or shuffle through standing to the chair. This involves actively transferring weight from one leg to another to move to the chair. If the patient has been stood with the assistance of a medical device, they must step to the chair (not included if the patient is wheeled in a standing lifter device)</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_6</id>
+		<name>Marching on spot (at bedside)</name>
+		<description>Able to walk on the spot by lifting alternate feet (must be able to step at least 4 times, twice on each foot), with or without assistance</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_7</id>
+		<name>Walking with assistance of 2 or more people</name>
+		<description>Walking away from the bed/chair by at least 5 m (5 yards) assisted by 2 or more people</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_8</id>
+		<name>Walking with assistance of 1 person</name>
+		<description>Walking away from the bed/chair by at least 5 m (5 yards) assisted by 1 person</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_9</id>
+		<name>Walking independently with a gait aid</name>
+		<description>Walking away from the bed/chair by at least 5 m (5 yards) with a gait aid, but no assistance from another person. In a wheelchair bound person, this activity level includes wheeling the chair independently 5 m (5 years) away from the bed/chair</description>
+	</label>
+	<label>
+		<id>ICU_Mobility_Scale_1_10</id>
+		<name>Walking independently without a gait aid</name>
+		<description>Walking away from the bed/chair by at least 5 m (5 yards) without a gait aid or assistance from another person</description>
+	</label>
+</labels>

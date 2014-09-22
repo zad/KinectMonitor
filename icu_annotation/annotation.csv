@@ -1,0 +1,7 @@
+Username,Camera,StartTime,EndTime,LabelId,LabelName,LastModifiedTime
+test,WICU-room5_2,20140628_010200,20140628_012100,ICU_Mobility_Scale_1_0,Nothing (lying in bed),16-Sep-2014 15:50:10
+andong,WICU-room5_3,20140501_130600,20140501_135600,ICU_Mobility_Scale_1_1,Sitting or exercises in bed,17-Sep-2014 16:15:17
+andong,WICU-room5_3,20140501_130600,20140501_135600,ICU_Mobility_Scale_1_10,Walking independently without a gait aid,17-Sep-2014 16:15:17
+andong,WICU-room5_2,20140430_160400,20140430_161800,ICU_Mobility_Scale_1_0,Nothing (lying in bed),17-Sep-2014 16:24:02
+andong,WICU-room5_2,20140430_161700,20140430_162600,ICU_Mobility_Scale_1_1,Sitting or exercises in bed,17-Sep-2014 16:49:20
+andong,WICU-room5_2,20140430_161700,20140430_162600,ICU_Mobility_Scale_1_4,Standing,17-Sep-2014 16:49:20
