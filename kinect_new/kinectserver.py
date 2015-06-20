@@ -21,7 +21,7 @@ from twisted.internet.protocol import Factory
 from twisted.internet import ssl, reactor
 import datetime
 import settings
-
+import time
 
 PORT = settings.port
 
@@ -32,6 +32,7 @@ CLIENT_CERT_FILE = "client.cert"
 ROOT_DIR = os.path.expanduser("~/kinect")
 DATA_DIR = os.path.join(ROOT_DIR, "incoming")
 LOG_FILE = os.path.join(ROOT_DIR, "server"+datetime.date.today().strftime("%Y%m%d")+".log")
+SYNC_INTERVAL = 1800 # half an hour
 
 class KinectServer(LineReceiver):
     """ Twisted Protocol that receives and relays commands through the network. """
@@ -123,7 +124,16 @@ class KinectServerFactory(Factory):
 
     def buildProtocol(self, addr):
         """ Inherited from Twisted. This is what builds a KinectServer for each incoming connection. """
+	reactor.callLater(1, self.timesync)
         return KinectServer(self)
+
+    def timesync(self):
+        curtime = time.strftime('%m%d%H%M%Y.%S')
+        line = "set * * time %s" % (curtime,)
+        for client in self.clients:
+            if client is not self:
+                client.sendLine(line)
+        reactor.callLater(SYNC_INTERVAL, self.timesync) 
 
 def initLog():
     # set up logging to file - see previous section for more details
